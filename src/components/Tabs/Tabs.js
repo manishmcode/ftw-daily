@@ -28,7 +28,7 @@ const Tabs = props => {
   const classes = classNames(rootClasses, className);
 
   const tabNavTabs = React.Children.map(children, child => {
-    const { tabId, tabLabel, tabLinkProps } = child.props;
+    const { tabId, tabLabel, tabLinkProps, className } = child.props;
 
     // Child components need to have TabNav props included
     if (!tabId || !tabLabel || !tabLinkProps) {
@@ -46,6 +46,7 @@ const Tabs = props => {
       linkProps: child.props.tabLinkProps,
       disabled: child.props.disabled,
       selected: child.props.selected,
+      className
     };
   });
 

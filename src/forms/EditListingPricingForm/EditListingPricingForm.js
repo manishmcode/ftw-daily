@@ -50,6 +50,10 @@ export const EditListingPricingFormComponent = props => (
         id: 'EditListingPricingForm.priceInputPlaceholder',
       });
 
+      const getTranslation = (key) => intl.formatMessage({
+        id: `EditListingPricingForm.${key}`,
+      });
+
       const priceRequired = validators.required(
         intl.formatMessage({
           id: 'EditListingPricingForm.priceRequired',
@@ -96,6 +100,28 @@ export const EditListingPricingFormComponent = props => (
             autoFocus
             label={pricePerUnitMessage}
             placeholder={pricePlaceholderMessage}
+            currencyConfig={config.currencyConfig}
+            validate={priceValidators}
+          />
+
+          <FieldCurrencyInput
+            id="priceTwo"
+            name="priceTwo"
+            className={css.priceInput}
+            autoFocus
+            label={getTranslation("priceThwoPerNightPlaceholder")}
+            placeholder={getTranslation("priceTwoPlaceholder")}
+            currencyConfig={config.currencyConfig}
+            validate={priceValidators}
+          />
+
+          <FieldCurrencyInput
+            id="priceThree"
+            name="priceThree"
+            className={css.priceInput}
+            autoFocus
+            label={getTranslation("priceThreePerNighPlaceholder")}
+            placeholder={getTranslation("priceThreePlaceholder")}
             currencyConfig={config.currencyConfig}
             validate={priceValidators}
           />

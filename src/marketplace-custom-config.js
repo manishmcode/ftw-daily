@@ -61,6 +61,30 @@ export const filters = [
     },
   },
   {
+    id: 'priceTwo',
+    label: 'PriceTwo',
+    type: 'PriceFilter',
+    group: 'primary',
+    queryParamNames: ['pub_priceTwo'],
+    config: {
+      min: 0,
+      max: 1000,
+      step: 5,
+    },
+  },
+  {
+    id: 'priceThree',
+    label: 'PriceThree',
+    type: 'PriceFilter',
+    group: 'primary',
+    queryParamNames: ['pub_priceThree'],
+    config: {
+      min: 0,
+      max: 1000,
+      step: 5,
+    },
+  },
+  {
     id: 'keyword',
     label: 'Keyword',
     type: 'KeywordFilter',

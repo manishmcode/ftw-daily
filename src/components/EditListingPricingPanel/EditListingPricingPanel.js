@@ -10,6 +10,7 @@ import { types as sdkTypes } from '../../util/sdkLoader';
 import config from '../../config';
 
 import css from './EditListingPricingPanel.module.css';
+import { getMoney } from '../../util/urlHelpers';
 
 const { Money } = sdkTypes;
 
@@ -30,7 +31,9 @@ const EditListingPricingPanel = props => {
 
   const classes = classNames(rootClassName || css.root, className);
   const currentListing = ensureOwnListing(listing);
-  const { price } = currentListing.attributes;
+  const { price, publicData  } = currentListing.attributes;
+  const priceTwo = publicData && publicData.priceTwo ? getMoney(publicData.priceTwo) : null;
+  const priceThree = publicData && publicData.priceThree ? getMoney(publicData.priceThree) : null;
 
   const isPublished = currentListing.id && currentListing.attributes.state !== LISTING_STATE_DRAFT;
   const panelTitle = isPublished ? (
@@ -46,8 +49,19 @@ const EditListingPricingPanel = props => {
   const form = priceCurrencyValid ? (
     <EditListingPricingForm
       className={css.form}
-      initialValues={{ price }}
-      onSubmit={onSubmit}
+      initialValues={{ price, priceTwo, priceThree}}
+      onSubmit={values => {
+        const { price, priceTwo = null, priceThree = null } = values;
+        const updatedValues  = {
+          price,
+          publicData: {
+            priceTwo: {amount: priceTwo.amount, currency: priceTwo.currency}, 
+            priceThree: {amount: priceThree.amount, currency: priceThree.currency}
+          }
+        }
+        onSubmit(updatedValues )
+        }
+        }
       onChange={onChange}
       saveActionMsg={submitButtonText}
       disabled={disabled}

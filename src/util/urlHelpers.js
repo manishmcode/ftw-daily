@@ -1,7 +1,7 @@
 import queryString from 'query-string';
 import { types as sdkTypes } from './sdkLoader';
 
-const { LatLng, LatLngBounds } = sdkTypes;
+const { LatLng, LatLngBounds, Money } = sdkTypes;
 
 export const LISTING_PAGE_PENDING_APPROVAL_VARIANT = 'pending-approval';
 export const LISTING_PAGE_DRAFT_VARIANT = 'draft';
@@ -239,3 +239,6 @@ export const twitterPageURL = twitterHandle => {
   }
   return null;
 };
+
+
+ export const getMoney = price => new Money(price.amount, price.currency)

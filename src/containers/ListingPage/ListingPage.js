@@ -52,6 +52,7 @@ import SectionHostMaybe from './SectionHostMaybe';
 import SectionRulesMaybe from './SectionRulesMaybe';
 import SectionMapMaybe from './SectionMapMaybe';
 import css from './ListingPage.module.css';
+import SectionPrices from './SectionPrices';
 
 const MIN_LENGTH_FOR_LONG_WORDS_IN_TITLE = 16;
 
@@ -375,7 +376,6 @@ export class ListingPageComponent extends Component {
         {authorDisplayName}
       </NamedLink>
     );
-
     const amenityOptions = findOptionsForSelectFilter('amenities', filterConfig);
     const categoryOptions = findOptionsForSelectFilter('category', filterConfig);
     const category =
@@ -385,7 +385,7 @@ export class ListingPageComponent extends Component {
           <span className={css.separator}>•</span>
         </span>
       ) : null;
-
+    
     return (
       <Page
         title={schemaTitle}
@@ -457,23 +457,8 @@ export class ListingPageComponent extends Component {
                     onManageDisableScrolling={onManageDisableScrolling}
                   />
                 </div>
-                <BookingPanel
-                  className={css.bookingPanel}
-                  listing={currentListing}
-                  isOwnListing={isOwnListing}
-                  unitType={unitType}
-                  onSubmit={handleBookingSubmit}
-                  title={bookingTitle}
-                  subTitle={bookingSubTitle}
-                  authorDisplayName={authorDisplayName}
-                  onManageDisableScrolling={onManageDisableScrolling}
-                  timeSlots={timeSlots}
-                  fetchTimeSlotsError={fetchTimeSlotsError}
-                  onFetchTransactionLineItems={onFetchTransactionLineItems}
-                  lineItems={lineItems}
-                  fetchLineItemsInProgress={fetchLineItemsInProgress}
-                  fetchLineItemsError={fetchLineItemsError}
-                />
+                
+                <SectionPrices currentListing={currentListing} tab={params.tab} priceData={priceData} />
               </div>
             </div>
           </LayoutWrapperMain>

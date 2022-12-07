@@ -609,3 +609,59 @@
   word-break: break-word;
   hyphens: auto;
 }
+.priceTab{
+  border: 2px solid #e7e7e7;
+  height: 300px;
+  padding: 30px 30px;
+  border-top-color: #c3c3c3;
+  border-radius: 0 0 10px 10px;
+  border-top-width: 4px;
+}
+
+.priceRow {
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.priceSection {
+  float: left;
+  font-size: 54px;
+  font-weight: 600;
+}
+.tabContent {
+  background-color: #000;
+}
+.subhead{
+  font-size: 20px;
+  margin: 0;
+  padding-top: 17px;
+  color: #a1a1a1;
+  display: block;
+}
+.bookBtn{
+  border-radius: 8px;
+  font-size: 25px;
+  background-color: #f34835;
+  padding: 14px 145px;
+  border: none;
+  color: #ffff;
+}
+.reviewrow{
+  display: flex;
+  justify-content: space-around;
+}
+
+.tabsRootClass {
+  margin-top: 70px;
+}
+
+.activeTab {
+  background: #ccc;
+}
+.activeTab a{
+  padding-left: 10px;
+}
+.inActiveTab {
+  background: transparent;
+  padding-left: 10px;
+}
